@@ -1,16 +1,7 @@
-# filelist-api
-
-How to build
-```shell
-docker build -t myregistry.example.com/filelist-api-whitelist:1
-```
-
-Compose file
-```
 version: '3.2'
 services:
     changedetection:
-      image: myregistry.example.com/filelist-api-whitelist:1 .
+      image: myregistry.example.com/filelist-api-whitelist:1
       container_name: filelist-api
       environment:
         - FL_USERNAME=YOUR_USER
@@ -23,5 +14,3 @@ services:
       container_name: chrome
       image: browserless/chrome
       restart: unless-stopped
-```
-
