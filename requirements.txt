@@ -1,2 +1,2 @@
-selenium=4.10
+selenium==4.10
 schedule
