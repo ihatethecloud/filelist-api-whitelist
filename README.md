@@ -7,7 +7,7 @@ This is a simple python script which uses a headless browser to update your publ
 ### How to build
 
 ```shell
-docker build -t myregistry.example.com/filelist-api-whitelist:1
+docker build -t filelist-api-whitelist .
 ```
 
 ## How to run
@@ -24,21 +24,15 @@ echo "myPassword" | docker secret create my_password -
 2. docker-compose.yml
 
 ```
-version: '3.2'
+version: '2.1'
 services:
     changedetection:
-      image: myregistry.example.com/filelist-api-whitelist:1 .
-      container_name: filelist-api
+      build: .
+      container_name: filelist-api-whitelist
       environment:
         - FL_USERNAME=/run/secrets/my_username
         - FL_PASSWORD=/run/secrets/my_password
-        - CHECK_INTERVAL=10 #in minutes I suggest putting more than 5 minutes.
-        - DRIVER=chrome # container_name of browserless port is always 3000
-      restart: unless-stopped
-
-    browserless-chrome:
-      container_name: chrome
-      image: browserless/chrome
+        - CHECK_INTERVAL=10 # in minutes I suggest putting more than 5 minutes.
       restart: unless-stopped
 ```
 
@@ -50,21 +44,15 @@ But if you know what you are doing... here you go.
 
 Compose file
 ```
-version: '3.2'
+version: '2.1'
 services:
     changedetection:
-      image: myregistry.example.com/filelist-api-whitelist:1 .
-      container_name: filelist-api
+      build: .
+      container_name: filelist-api-whitelist
       environment:
         - FL_USERNAME=YOUR_USER
         - FL_PASSWORD=YOUR_PASSWORD
         - CHECK_INTERVAL=10 # in minutes I suggest putting more than 5 minutes.
-        - DRIVER=chrome # container_name of browserless port is always 3000
-      restart: unless-stopped
-
-    browserless-chrome:
-      container_name: chrome
-      image: browserless/chrome
       restart: unless-stopped
 ```
 
