@@ -2,6 +2,8 @@
 
 ### Introduction
 
+Use this instead! https://github.com/rursache/filelist-api-whitelist
+
 This is a simple python script which uses a headless browser to update your public IP in FL profile.
 
 ### How to build
